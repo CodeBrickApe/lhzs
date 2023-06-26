@@ -1,4 +1,5 @@
 import { FC } from "react";
+import Image from "next/image";
 
 type ImgElementStyle = NonNullable<JSX.IntrinsicElements["img"]["style"]>;
 
@@ -20,16 +21,13 @@ const LazyLoadImage: FC<Props> = ({
   objectFit,
 }) => {
   return (
+    // eslint-disable-next-line @next/next/no-img-element
     <img
-      unoptimized
-      layout={layout ?? "fill"}
       width={width ?? "100%"}
       height={height ?? "100%"}
       placeholder="blur"
       src={src}
       alt={alt ?? ""}
-      objectFit={objectFit ?? "cover"}
-      blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNMT0iYCQAEHwHCrSm2UwAAAABJRU5ErkJggg=="
     />
   );
 };
