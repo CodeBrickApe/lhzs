@@ -1,0 +1,122 @@
+.NinthWrapper {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+.NinthWrapper canvas {
+  position: absolute;
+  top: -50%;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(#B7B0E3, #FFD3D6);
+}
+
+@-webkit-keyframes anim {
+  from {
+    transform: translateX(200%);
+  }
+
+  to {
+    transform: translateX(-200%);
+  }
+}
+
+@keyframes anim {
+  from {
+    transform: translateX(200%);
+  }
+
+  to {
+    transform: translateX(-200%);
+  }
+}
+
+@-webkit-keyframes anime {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-200%);
+  }
+}
+
+@keyframes anime {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-200%);
+  }
+}
+
+.NinthWrapper .c1,
+.NinthWrapper .c2 {
+  width: 800px;
+  height: 700px;
+  position: absolute;
+  background: transparent url('/public/images/clouds.png') 0 0 no-repeat;
+  background-size: 100%;
+  z-index: 999;
+}
+
+.NinthWrapper .c1.one,
+.NinthWrapper .c2.one {
+  top: -260px;
+  left: 0px;
+}
+
+.NinthWrapper .c1.two,
+.NinthWrapper .c2.two {
+  top: -200px;
+  left: 100px;
+}
+
+.NinthWrapper .c1.three,
+.NinthWrapper .c2.three {
+  top: -240px;
+  right: 100px;
+}
+
+.NinthWrapper .c1.four,
+.NinthWrapper .c22.four {
+  top: -180px;
+  right: 0px;
+}
+
+.NinthWrapper .c2 .one {
+  top: -209px;
+}
+
+@media (max-width: 1023px) {
+  .NinthWrapper .c2.one {
+    left: -80px;
+  }
+
+  .NinthWrapper .c2.two {
+    left: -120px;
+  }
+
+  .NinthWrapper .c2.three {
+    right: 220px;
+  }
+
+  .NinthWrapper .c2.four {
+    right: 220px;
+  }
+}
+
+.NinthWrapper .c1 {
+  -webkit-animation: anime 1000s linear infinite forwards;
+  animation: anime 1000s linear infinite forwards;
+}
+
+.NinthWrapper .c2 {
+  transform: translateX(200%);
+  -webkit-animation: anim 1000s linear infinite forwards;
+  animation: anim 1000s linear infinite forwards;
+}

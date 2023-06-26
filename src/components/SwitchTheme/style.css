@@ -1,0 +1,430 @@
+.SwitchTheme .dark {
+    --wrapper-bg: #9bb7e8;
+    --hill-left: #5c6090;
+    --hill-right: #4b4f85;
+    --sky-bg-night: linear-gradient(to bottom, rgba(185, 147, 212, 1) 0%, rgba(230, 224, 237, 1) 65%);
+    --tree-trunk: #3b3853;
+    --tree: rgba(76, 80, 139, 1);
+    --sun: linear-gradient(24deg, rgba(255, 219, 156, 1) 0%, rgba(254, 195, 87, 1) 53%);
+    --day-night: rgba(242, 198, 160, 0.6);
+}
+
+.SwitchTheme .light {
+    --wrapper-bg: #111827;
+    --hill-left: #602291;
+    --hill-right: #511a7f;
+    --sky-bg-day: linear-gradient(180deg, rgba(231, 95, 122, 1) 0%, rgba(255, 177, 104, 1) 83%);
+    --tree-trunk: #3b3853;
+    --tree: #78177b;
+    --sun: linear-gradient(180deg, rgba(255, 219, 156, 1) 0%, rgba(254, 195, 87, 1) 53%);
+    --day-night: #6c528cb3;
+}
+
+.SwitchTheme {
+    position: fixed;
+    top: 0.5rem;
+    right: 2.4rem;
+    z-index: 99999;
+
+}
+
+.SwitchTheme input {
+    display: none;
+}
+
+.SwitchTheme .toggle-wrapper {
+    position: relative;
+    cursor: pointer;
+    border-radius: 120px;
+    width: 8rem;
+    height: 2.5rem;
+    background: #fff;
+    overflow: hidden;
+    background: var(--sky-bg-night);
+
+}
+
+.SwitchTheme .toggle-wrapper:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #e75f7a 0%, #ffb168 83%);
+    opacity: 0;
+    transition: 1s;
+    border-radius: 52px;
+    overflow: hidden;
+}
+
+input#switch:checked+*:before {
+    opacity: 1;
+}
+
+.SwitchTheme .hills {
+    position: relative;
+    display: flex;
+    width: 144px;
+    bottom: -30px;
+    left: -8px;
+}
+
+.SwitchTheme .hill-left {
+    position: relative;
+    z-index: 2;
+    width: 76px;
+    height: 24px;
+    border-radius: 100%;
+    background: var(--hill-left);
+    top: -6px;
+    left: -10px;
+    transform: rotate(8deg);
+}
+
+.SwitchTheme .hill-right {
+    position: relative;
+    z-index: 1;
+    width: 68px;
+    height: 30px;
+    border-radius: 100%;
+    background: var(--hill-right);
+    left: -16px;
+}
+
+.SwitchTheme .tree-left {
+    position: absolute;
+    z-index: 5;
+    left: 20px;
+    bottom: -8px;
+    bottom: -8px;
+}
+
+.SwitchTheme .tree-left .trunk {
+    z-index: 3;
+    height: 50px;
+    width: 4px;
+    background: var(--tree-trunk);
+    border-radius: 100% 100% 0 0;
+}
+
+.SwitchTheme .branch {
+    background: var(--tree-trunk);
+    position: relative;
+}
+
+.SwitchTheme .branch:nth-child(1) {
+    width: 2px;
+    height: 14px;
+    top: 9px;
+    left: -2px;
+    border-radius: 100%;
+    transform: rotate(-22deg);
+}
+
+.SwitchTheme .branch:nth-child(1):before {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 9px;
+    left: -4px;
+    top: 5px;
+    border: 2px solid var(--tree-trunk);
+    border-color: transparent var(--tree-trunk) transparent transparent;
+    border-radius: 60%;
+    transform: rotate(10deg);
+}
+
+.SwitchTheme .branch:nth-child(2) {
+    width: 2px;
+    height: 12px;
+    top: -9px;
+    left: 3px;
+    border-radius: 100%;
+    transform: rotate(22deg);
+}
+
+.SwitchTheme .branch:nth-child(2):after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 11px;
+    left: 1px;
+    top: 4px;
+    border: 2px solid var(--tree-trunk);
+    border-color: transparent transparent transparent var(--tree-trunk);
+    border-radius: 60%;
+    transform: rotate(-11deg);
+}
+
+.SwitchTheme .tree-left .tree {
+    position: absolute;
+    left: -10px;
+    top: -2px;
+    width: 24px;
+    height: 24px;
+    z-index: -1;
+    background: var(--tree);
+    border-radius: 63% 37% 31% 69%/60% 74% 26% 40%;
+    transform: rotate(40deg);
+}
+
+.SwitchTheme .tree-left .tree:before {
+    content: "";
+    position: absolute;
+    left: -10px;
+    top: -10px;
+    width: 24px;
+    height: 24px;
+    z-index: -1;
+    background: var(--tree);
+    border-radius: 63% 37% 31% 69%/60% 74% 26% 40%;
+}
+
+.SwitchTheme .tree-right {
+    position: relative;
+    left: 74px;
+    top: 8px;
+}
+
+.SwitchTheme .tree-back {
+    position: absolute;
+    z-index: 2;
+    width: 7px;
+    height: 13px;
+    border-radius: 80%;
+    background: var(--tree);
+    top: 6px;
+    border-bottom: 20px;
+    border-color: var(--tree);
+}
+
+.SwitchTheme .tree-back .trunk {
+    position: absolute;
+    top: 12px;
+    background: var(--tree);
+    width: 2px;
+    height: 5px;
+    left: 3px;
+}
+
+.SwitchTheme .tree-front {
+    position: absolute;
+    z-index: 3;
+    width: 11px;
+    height: 24px;
+    border-radius: 80%;
+    background: var(--tree);
+    top: -1px;
+    left: 12px;
+    border-bottom: 20px;
+    border-color: var(--tree);
+}
+
+.SwitchTheme .tree-front .trunk {
+    position: absolute;
+    z-index: 2;
+    top: 24px;
+    background: var(--tree-trunk);
+    width: 2px;
+    height: 5px;
+    left: 4px;
+    border-radius: 1px;
+}
+
+.SwitchTheme .tree-front .trunk:before {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 5px;
+    background: var(--tree-trunk);
+    left: 0px;
+    top: 0px;
+    border-radius: 4px;
+    transform: rotate(2deg);
+    transform: skewx(-10deg);
+}
+
+.SwitchTheme .tree-front .trunk:after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: -1px;
+    width: 3px;
+    height: 1px;
+    background: var(--tree-trunk);
+    border-radius: 100%;
+}
+
+.SwitchTheme .moon {
+    position: absolute;
+    background-color: transparent;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    box-shadow: inset -5px -3px 0 1px #fff;
+    left: 38px;
+    top: -5px;
+    transform: translatey(8px);
+    transition: all 0.6s ease-out 0.3s;
+    transition-duration: 0.8s;
+}
+
+.SwitchTheme .switch .moon {
+    transform: translatey(32px);
+    transition: all 0.5s ease-out 0.3s;
+    transition-duration: 0.8s;
+}
+
+.SwitchTheme .stars {
+    position: absolute;
+    right: 21px;
+    transform: translatey(10px);
+    transition: all 0.6s ease-in 0.3s;
+}
+
+.SwitchTheme .switch .stars {
+    transform: translatey(-80px);
+    transition: all 0.6s ease-in 0.3s;
+}
+
+.SwitchTheme .star {
+    position: relative;
+    background: #fff;
+}
+
+.SwitchTheme .big-star .vertical {
+    /* width: 2px; */
+    height: 4px;
+}
+
+.SwitchTheme .big-star .vertical:before {
+    content: "";
+    position: absolute;
+    top: -4px;
+    width: 0;
+    height: 0;
+    border-right: 2px solid transparent;
+    border-left: 2px solid transparent;
+    border-bottom: 4px solid #fff;
+}
+
+.SwitchTheme .big-star .vertical:after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    border-right: 2px solid transparent;
+    border-left: 2px solid transparent;
+    border-top: 4px solid #fff;
+}
+
+.SwitchTheme .big-star .horizontal {
+    position: relative;
+    transform: rotate(90deg);
+    left: 1px;
+    top: -1px;
+}
+
+.SwitchTheme .big-star .horizontal:before {
+    content: "";
+    position: absolute;
+    top: -4px;
+    width: 0;
+    height: 0;
+    border-right: 2px solid transparent;
+    border-left: 2px solid transparent;
+    border-bottom: 4px solid #fff;
+}
+
+.SwitchTheme .big-star .horizontal:after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    border-right: 2px solid transparent;
+    border-left: 2px solid transparent;
+    border-top: 4px solid #fff;
+}
+
+.SwitchTheme .small-star {
+    top: -1px;
+    left: 15px;
+    width: 6px;
+    height: 6px;
+}
+
+.SwitchTheme .small-star .vertical:before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    width: 0;
+    height: 0;
+    border-right: 3px solid transparent;
+    border-left: 3px solid transparent;
+    border-bottom: 6px solid #fff;
+}
+
+.SwitchTheme .small-star .vertical:after {
+    content: "";
+    position: absolute;
+    top: 6px;
+    border-right: 3px solid transparent;
+    border-left: 3px solid transparent;
+    border-top: 6px solid #fff;
+}
+
+.SwitchTheme .small-star .horizontal {
+    position: relative;
+    transform: rotate(90deg);
+    top: 3px;
+    left: 3px;
+}
+
+.SwitchTheme .small-star .horizontal:before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    width: 0;
+    height: 0;
+    border-right: 3px solid transparent;
+    border-left: 3px solid transparent;
+    border-bottom: 6px solid #fff;
+}
+
+.SwitchTheme .small-star .horizontal:after {
+    content: "";
+    position: absolute;
+    top: 6px;
+    border-right: 3px solid transparent;
+    border-left: 3px solid transparent;
+    border-top: 6px solid #fff;
+}
+
+.SwitchTheme .sun {
+    position: absolute;
+    z-index: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--sun);
+    left: 48px;
+    top: 50px;
+    box-shadow: 8px 8px 54px 12px rgba(255, 214, 150, 0.97);
+    transition: all 0.8s ease-in 0.3s;
+    transform: translatey(20px);
+}
+
+.SwitchTheme .switch .sun {
+    transition: all 0.8s ease-out 0.3s;
+    transform: translatey(-40px);
+}
+
+
+/* .SwitchTheme .switch .day-night {
+    transform: translatex(70px);
+} */
+
+@media screen and (max-width: 550px) {
+    .toggle-wrapper {
+        transform: scale(0.5);
+    }
+}
