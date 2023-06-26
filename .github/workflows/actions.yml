@@ -1,35 +1,45 @@
-name: Actions CI - Next.js version 12 static site export, GitHub Actions Build and Deploy
+name: GitHub Pages
+
 on:
   push:
-    branches: [main]
-# 执行的一项或多项任务
+    branches:
+      - main
+  pull_request:
+
 jobs:
-  build-and-deploy:
-    # 运行在虚拟机环境ubuntu-latest
-    # https://docs.github.com/zh/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idruns-on
-    runs-on: ubuntu-latest
+  deploy:
+    runs-on: ubuntu-20.04
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
     steps:
-      - name: 获取源码  🛎️
-        uses: actions/checkout@v3
-      - name: Node环境版本 🗜️
+      - uses: actions/checkout@v3
+
+      - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 18
-      - name: 安装 Pnpm 🧬
-        uses: pnpm/action-setup@v2
-        id: pnpm-install
+          node-version: "16.x"
+
+      - name: Get yarn cache
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
         with:
-          version: 7
-          run_install: true
-      - name: 安装依赖 ⚙️
-        run: pnpm install
-      - name: 打包 🏗️
-        run: |
-          npm run build
-          touch out/.nojekyll
-      - name: 部署 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
+      - run: yarn export
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/main' }}
         with:
-          branch: gh-pages
-          folder: out
-          clean: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
