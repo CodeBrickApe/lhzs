@@ -1,4 +1,5 @@
 name: Actions CI - Next.js version 12 static site export, GitHub Actions Build and Deploy
+theme: jekyll-theme-minimal
 on:
   push:
     branches: [main]
