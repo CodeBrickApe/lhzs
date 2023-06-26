@@ -1,15 +1,14 @@
-import { FC } from 'react'
-import Image from 'next/image'
+import { FC } from "react";
 
-type ImgElementStyle = NonNullable<JSX.IntrinsicElements['img']['style']>
+type ImgElementStyle = NonNullable<JSX.IntrinsicElements["img"]["style"]>;
 
 export interface Props {
-  src: string
-  alt?: string
-  width?: number | string
-  height?: number | string
-  layout?: 'fill' | 'fixed' | 'intrinsic' | 'responsive' | undefined
-  objectFit?: ImgElementStyle['objectFit']
+  src: string;
+  alt?: string;
+  width?: number | string;
+  height?: number | string;
+  layout?: "fill" | "fixed" | "intrinsic" | "responsive" | undefined;
+  objectFit?: ImgElementStyle["objectFit"];
 }
 
 const LazyLoadImage: FC<Props> = ({
@@ -21,18 +20,18 @@ const LazyLoadImage: FC<Props> = ({
   objectFit,
 }) => {
   return (
-    <Image
+    <img
       unoptimized
-      layout={layout ?? 'fill'}
-      width={width ?? '100%'}
-      height={height ?? '100%'}
+      layout={layout ?? "fill"}
+      width={width ?? "100%"}
+      height={height ?? "100%"}
       placeholder="blur"
       src={src}
-      alt={alt ?? ''}
-      objectFit={objectFit ?? 'cover'}
+      alt={alt ?? ""}
+      objectFit={objectFit ?? "cover"}
       blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNMT0iYCQAEHwHCrSm2UwAAAABJRU5ErkJggg=="
     />
-  )
-}
+  );
+};
 
-export default LazyLoadImage
+export default LazyLoadImage;
