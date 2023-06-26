@@ -77,6 +77,7 @@ declare module 'styled-components' {
       sixOpcityWhite: string
       sevenOpcityWhite: string
       linkBase: string
+      orange:string
     }
     zIndex: {
       negative: number

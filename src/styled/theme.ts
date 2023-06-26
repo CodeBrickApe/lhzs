@@ -117,6 +117,7 @@ const defaultTheme = {
     sixOpcityWhite: 'rgba(225, 225, 225, .6)',
     sevenOpcityWhite: 'rgba(225, 225, 225, .7)',
     linkBase: '#25c3a0',
+    orange:'#ffa500'
   },
   zIndex: {
     negative: -1,
