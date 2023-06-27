@@ -41,14 +41,6 @@ const nextConfig = {
   },
   assetPrefix: assetPrefix,
   basePath: basePath,
-  webpack: (
-    config,
-    { buildId, dev, isServer, defaultLoaders, webpack },
-  ) => {
-    config.module.rules.push(...rules)
-
-    return config
-  },
 }
 
 module.exports = nextConfig
