@@ -19,6 +19,7 @@ const rules = [
 
 const nextConfig = {
   reactStrictMode: true,
+  distDir: 'out',
   webpack: (
     config,
     { buildId, dev, isServer, defaultLoaders, webpack },
