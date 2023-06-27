@@ -1050,7 +1050,7 @@ let detectDomainLocale;
 
 if (false) {}
 
-const basePath =  false || '';
+const basePath = "/lhzs" || 0;
 
 function buildCancellationError() {
   return Object.assign(new Error('Route Cancelled'), {

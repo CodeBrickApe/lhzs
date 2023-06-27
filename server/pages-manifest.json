@@ -8,7 +8,7 @@
   "/": "pages/index.html",
   "/post": "pages/post.html",
   "/project": "pages/project.html",
-  "/post/[id]": "pages/post/[id].js",
   "/_document": "pages/_document.js",
+  "/post/[id]": "pages/post/[id].js",
   "/404": "pages/404.html"
 }
